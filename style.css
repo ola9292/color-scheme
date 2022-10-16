@@ -7,7 +7,7 @@ body{
     align-items: center;
     flex-wrap: wrap;
     /* border: 1px solid brown; */
-    max-width: 80%;
+   
  }
  
 .color-container{
@@ -46,5 +46,10 @@ button{
 @media(max-width:750px){
     .color-container{
         justify-content: center;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
