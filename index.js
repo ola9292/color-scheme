@@ -3,8 +3,8 @@ let colorPicker = document.getElementById('color-picker')
 const colorBtn = document.getElementById('color-btn')
 const colorMode = document.getElementById('color-mode')
 const colorContainer = document.getElementById('color-container')
-let chosenColor;
-let chosenMode;
+let chosenColor = colorPicker.value.slice(1);
+let chosenMode = colorMode.value;
 
 
 colorMode.addEventListener('change',function(){
@@ -19,7 +19,11 @@ colorPicker.addEventListener('change',function(){
 
 colorBtn.addEventListener('click',function(){
     console.log(chosenColor,chosenMode)
-fetch(`https://www.thecolorapi.com/scheme/?hex=${chosenColor}&mode=${chosenMode}&count=6`)
+  Render()
+})
+
+function Render(){
+    fetch(`https://www.thecolorapi.com/scheme/?hex=${chosenColor}&mode=${chosenMode}&count=6`)
 .then((response) => response.json())
 .then((data) => {
     console.log(data.colors)
@@ -33,6 +37,7 @@ fetch(`https://www.thecolorapi.com/scheme/?hex=${chosenColor}&mode=${chosenMode}
     }).join('')
     colorContainer.innerHTML = colorScheme
 });
-})
+}
 
-
+// initial call
+Render()
